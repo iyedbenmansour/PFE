@@ -1,0 +1,127 @@
+/* Container Styles */
+.parkingListContainer {
+    display: flex;
+    justify-content: center;
+    padding:   2rem;
+  }
+  
+  .parkingSpacesList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:   100%;
+    max-width:   1024px;
+  }
+  
+  /* Search Section Styles */
+  .parkingSearchSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:   100%;
+    margin-bottom:   2rem;
+  }
+  
+  .searchTitle {
+    font-size:   2rem;
+    margin-bottom:   1rem;
+  }
+  
+  .searchItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom:   1rem;
+  }
+  
+  .searchItem label {
+    margin-bottom:   0.5rem;
+  }
+  
+  .searchItem input {
+    padding:   0.5rem;
+    border:   1px solid #ccc;
+    border-radius:   5px;
+    font-size:   1rem;
+    width:   100%;
+  }
+  
+  .searchOptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:   100%;
+  }
+  
+  .searchOptionItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom:   1rem;
+    width:   48%; /* Adjust as needed for responsiveness */
+  }
+  
+  .searchOptionText {
+    margin-bottom:   0.5rem;
+  }
+  
+  .searchOptionInput {
+    padding:   0.5rem;
+    border:   1px solid #ccc;
+    border-radius:   5px;
+    font-size:   1rem;
+    width:   100%;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width:   768px) {
+    .parkingListContainer {
+      padding:   1rem;
+    }
+  
+    .searchOptionItem {
+      width:   100%; /* Full width on smaller screens */
+    }
+  }
+  .buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:   20px; /* Add space between the buttons */
+    margin-top:   20px;
+  }
+  
+  .buttonsContainer button {
+    padding:   10px   20px;
+    font-size:   16px;
+    border: none;
+    border-radius:   5px;
+    cursor: pointer;
+    transition: background-color   0.3s ease;
+  }
+  
+  .buttonsContainer button:hover {
+    background-color: #0071c2;
+    color: white;
+  }
+  
+  .buttonsContainer button:active {
+    transform: scale(0.98);
+  }
+  
+  .buttonsContainer button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  
+  /* Style for the "Book Now" button */
+  .buttonsContainer .bookNowButton {
+    background-color: #0071c2;
+    color: white;
+  }
+  
+  /* Style for the "Change Date Range" button */
+  .buttonsContainer .changeDateRangeButton {
+    background-color: #ffffff;
+    color: #003580;
+  }
+  

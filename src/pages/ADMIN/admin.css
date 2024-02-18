@@ -1,0 +1,79 @@
+/* admin.css */
+
+.adminContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:   1rem;
+  padding:   2rem;
+}
+
+.datePicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:   0.5rem;
+}
+
+.datePicker label {
+  font-weight: bold;
+}
+
+.datePicker input {
+  padding:   0.5rem;
+  border:   1px solid #ccc;
+  border-radius:   5px;
+}
+
+.reservationsList {
+  display: flex;
+  flex-direction: column;
+  gap:   1rem;
+}
+
+.reservationItem {
+  padding:   1rem;
+  border:   1px solid #ccc;
+  border-radius:   5px;
+  width:   100%;
+  box-shadow:   0   2px   4px rgba(0,   0,   0,   0.1);
+  position: relative;
+}
+
+.reservationItem .details {
+  display: none; /* Hide additional details by default */
+}
+
+.reservationItem[data-hover="true"] .details {
+  display: block; /* Show additional details when hovered */
+}
+
+.reservationItem:hover {
+  cursor: pointer;
+  box-shadow:   0   2px   4px rgba(0,   0,   0,   0.1);
+}
+
+/* admin.css */
+
+.adminContainer {
+  position: relative;
+  padding-left:  200px; /* Space for the sidebar */
+}
+
+.toggleSidebarButton {
+  position: absolute;
+  top:   1rem;
+  right:   1rem;
+  padding:   0.5rem   1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius:   5px;
+  cursor: pointer;
+}
+
+.toggleSidebarButton:hover {
+  background-color: #0056b3;
+}
+
+/* ... (other styles) */

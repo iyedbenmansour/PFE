@@ -1,0 +1,50 @@
+/* navbar.css */
+
+.navbar {
+  height:   60pxx;
+  background-color: #003580;
+  display: flex;
+  justify-content: center;
+}
+
+.navContainer {
+  width:   100%;
+  max-width:   1024px;
+  color:  white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight:   500;
+}
+
+.navButton {
+  margin-left:   20px;
+  border:   2px solid #003580;
+  border-radius:   5px;
+  padding:   5px   10px;
+  cursor: pointer;
+  color:  #ffffff;
+  background-color:  transparent;
+  transition:  background-color   0.3s ease;
+}
+
+.navButton:hover {
+  background-color: #003580;
+  color:  #000000;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width:   768px) {
+  .navContainer {
+    flex-direction: column; /* Stack the items vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start of the container */
+  }
+
+  .navButton {
+    margin-left:   0; /* Remove left margin on smaller screens */
+    margin-top:   10px; /* Add top margin on smaller screens */
+  }
+}
