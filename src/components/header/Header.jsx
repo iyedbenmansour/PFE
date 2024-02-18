@@ -64,7 +64,7 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              "Parking Made Easy: A Lifetime of Savings, Just One Click Away!"
+              Parking Made Easy: A Lifetime of Savings, Just One Click Away!
             </h1>
             <p className="headerDesc">
               Maximize Your Savings – Discover Instant Parking Discounts Up to
