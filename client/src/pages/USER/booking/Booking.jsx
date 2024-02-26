@@ -1,5 +1,6 @@
 // Booking.jsx
 import React, { useState } from "react";
+import axios from "axios";
 import "./booking.css";
 import Navbar from "../../../components/navbar/Navbar";
 import Header from "../../../components/header/Header";
@@ -25,16 +26,34 @@ const Booking = () => {
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Validate that the end date is not before the start date
     if (new Date(bookingEndDate) < new Date(bookingStartDate)) {
       alert("The end date cannot be before the start date.");
       return;
     }
-    // Set the isSubmitted state to true
     setIsSubmitted(true);
-    // Handle booking logic here
-    console.log(generateBookingInfoString());
+  
+    // Define the data to be sent
+    const bookingData = {
+      fullName,
+      phoneNumber,
+      email,
+      carModel,
+      licensePlate,
+      bookingStartDate,
+      bookingEndDate,
+    };
+  
+    // Send the data to the backend
+    axios.post("http://localhost:5000/api/booking", bookingData)
+      .then((response) => {
+        console.log("Success:", response.data);
+        // Handle the response here
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+  
 
   return (
     <>

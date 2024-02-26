@@ -5,10 +5,13 @@
   display: flex;
   justify-content: center; /* Center the form horizontally */
   align-items: center; /* Center the form vertically */
-  padding:   2rem;
-  height:  auto; /* Full viewport height */
-  width:   100vw; /* Full viewport width */
+  padding:  2rem;
+  height:  100vh; /* Full viewport height */
+  width:  100vw; /* Full viewport width */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  overflow: auto; /* Add scrollbars if content overflows */
 }
+
 /* Form Styles */
 .bookingForm {
   flex:   0   0   300px; /* Set the width to  300px */

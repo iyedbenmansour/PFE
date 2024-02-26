@@ -1,13 +1,14 @@
-/* register.css */
 
-/* Main Content Area Styles */
+/* Register Area Styles */
 .registerArea {
   display: flex;
   justify-content: center; /* Center the form horizontally */
   align-items: center; /* Center the form vertically */
   padding:   2rem;
-  height:  auto; /* Full viewport height */
+  height:   100vh; /* Full viewport height */
   width:   100vw; /* Full viewport width */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  overflow: auto; /* Add scrollbars if content overflows */
 }
 
 /* Form Styles */

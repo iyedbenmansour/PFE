@@ -1,41 +1,50 @@
 import React, { useState } from "react";
-import "./register.css"; // Import the updated CSS file
+import axios from 'axios'
+import "./register.css";
 import Navbar from "../../../components/navbar/Navbar";
 import Header from "../../../components/header/Header";
 import Footer from "../../../components/footer/Footer";
 
 const Register = () => {
   // State for form inputs
-  const [username, setUsername] = useState("");
+  const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [licensePlate, setLicensePlate] = useState("");
-  const [vehicleMake, setVehicleMake] = useState("");
-  const [vehicleModel, setVehicleModel] = useState("");
-  const [vehicleColor, setVehicleColor] = useState("");
+  const [cin, setCin] = useState("");
 
-  // Function to handle form submission
-  const handleRegister = (event) => {
-    event.preventDefault();
-    // Handle registration logic here
-    console.log(`User registered with username: ${username}, password: ${password}, email: ${email}, first name: ${firstName}, last name: ${lastName}, phone number: ${phoneNumber}, license plate: ${licensePlate}, vehicle make: ${vehicleMake}, vehicle model: ${vehicleModel}, vehicle color: ${vehicleColor}`);
+
+ // Function to handle form submission
+ const handleRegister = async (e) => {
+  e.preventDefault();
+  const newUser = {
+    name,
+    password,
+    email,
+    firstName,
+    lastName,
+    phoneNumber,
+    cin
   };
+  axios.post("http://localhost:5000/api/users", newUser)
+    .then(res => console.log(res.data))
+    .catch(err => console.error(err));
+};
 
   return (
     <>
       <Navbar />
-      <Header type="list" /> {/* Update the header type if necessary */}
-      <div className="registerArea"> {/* Updated class name */}
-        <form className="registerForm" onSubmit={handleRegister}> {/* Updated class name */}
+      <Header type="list" />
+      <div className="registerArea">
+        <form className="registerForm" onSubmit={handleRegister}>
           <h2>Register</h2>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
             id="username"
-            value={username}
+            
             onChange={(e) => setUsername(e.target.value)}
             required
           />
@@ -89,16 +98,10 @@ const Register = () => {
           <input
             type="text"
             id="licensePlate"
-            value={licensePlate}
-            onChange={(e) => setLicensePlate(e.target.value)}
+            value={cin}
+            onChange={(e) => setCin(e.target.value)}
             required
           />
-
-     
-
-      
-
-      
 
           <button type="submit">Register</button>
         </form>
