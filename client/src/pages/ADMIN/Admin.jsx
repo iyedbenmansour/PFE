@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./admin.css"; // Import the updated CSS file for admin display
+import "./admin.css";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import Sidebar from "../../components/sidebar/Sidebar"; // Import the Sidebar component
+import Sidebar from "../../components/sidebar/Sidebar";
 
 const Admin = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [reservations, setReservations] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
-
-  const fetchData = async () => {
-    const reservationResponse = await fetch(`/api/reservations?date=${selectedDate.toISOString()}`);
-    const reservationData = await reservationResponse.json();
-    setReservations(reservationData);
-  };
 
   useEffect(() => {
     fetchData();
   }, [selectedDate]);
 
-  const handleDateChange = (event) => {
-    setSelectedDate(new Date(event.target.value));
+  const fetchData = async () => {
+    const formattedDate = selectedDate.toISOString().split('T')[0];
+    const reservationResponse = await fetch(`http://localhost:5000/api/booking?date=${formattedDate}`);
+    const reservationData = await reservationResponse.json();
+    setReservations(reservationData);
   };
 
   const handleAddCar = () => {
@@ -51,13 +48,20 @@ const Admin = () => {
             type="date"
             id="date"
             value={selectedDate.toISOString().split('T')[0]}
-            onChange={handleDateChange}
+            onChange={(event) => setSelectedDate(new Date(event.target.value))}
           />
         </div>
         <div className="reservationsList">
           {reservations.map((reservation) => (
-            <div key={reservation.id} className="reservationItem">
-              {/* ... (reservation details) */}
+            <div key={reservation._id} className="reservationItem">
+              <h3>Booking Details</h3>
+              <p>Full Name: {reservation.fullName}</p>
+              <p>Email: {reservation.email}</p>
+              <p>Car Model: {reservation.carModel}</p>
+              <p>License Plate: {reservation.licensePlate}</p>
+              <p>Phone Number: {reservation.phoneNumber}</p>
+              <p>Booking Start Date: {new Date(reservation.bookingStartDate).toLocaleDateString()}</p>
+              <p>Booking End Date: {new Date(reservation.bookingEndDate).toLocaleDateString()}</p>
             </div>
           ))}
         </div>
@@ -66,4 +70,5 @@ const Admin = () => {
     </>
   );
 };
+
 export default Admin;

@@ -10,6 +10,8 @@ const port=process.env.port
 require("./config/parking.config")
 
 require("./routes/user.routes")(app)
+app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/c', require('./routes/contactus.routes'));
 
 
 

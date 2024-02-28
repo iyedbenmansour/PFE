@@ -12,18 +12,32 @@ const RemoveCar = () => {
     setIsConfirmed(false); // Reset confirmation when the license plate changes
   };
 
+  const checkCarExists = async (licensePlate) => {
+    const response = await fetch(`http://localhost:5000/api/booking/${licensePlate}`);
+    return response.ok;
+  };
+
   const handleConfirmRemoveCar = async () => {
     if (!licensePlateToRemove || !isConfirmed) {
       alert('Please fill in the license plate and check the box to confirm.');
       return;
     }
-    // Replace with your actual API call or data submission logic
-    const response = await fetch(`/api/cars/${licensePlateToRemove}`, {
+
+    const carExists = await checkCarExists(licensePlateToRemove);
+    if (!carExists) {
+      alert('Car with the given license plate does not exist.');
+      return;
+    }
+
+    // Proceed with deletion if the car exists
+    const response = await fetch(`http://localhost:5000/api/booking/${licensePlateToRemove}`, {
       method: 'DELETE',
     });
     if (response.ok) {
       // Redirect back to the admin page or show a success message
       navigate('/admin');
+    } else {
+      alert('Failed to remove the car. Please try again.');
     }
   };
 

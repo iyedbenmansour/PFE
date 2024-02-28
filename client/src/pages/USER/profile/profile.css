@@ -1,0 +1,46 @@
+/* profile.css */
+.profileArea {
+    padding:  20px;
+    background-color: #f9f9f9;
+    border:  1px solid #ddd;
+    border-radius:  5px;
+    width:  100%;
+    max-width:  600px;
+    margin:  0 auto;
+  }
+  
+  .profileForm {
+    display: flex;
+    flex-direction: column;
+    gap:  1rem;
+  }
+  
+  .profileForm label {
+    font-weight: bold;
+  }
+  
+  .profileForm input,
+  .profileForm select,
+  .profileForm textarea {
+    padding:  0.5rem;
+    border:  1px solid #ccc;
+    border-radius:  5px;
+    font-size:  1rem;
+    width:  100%;
+  }
+  
+  .profileForm button {
+    background-color: #0071c2;
+    color: white;
+    padding:  0.5rem  1rem;
+    border: none;
+    border-radius:  5px;
+    cursor: pointer;
+    transition: background-color  0.3s ease;
+    font-weight: bold;
+  }
+  
+  .profileForm button:hover {
+    background-color: #005a99;
+  }
+  

@@ -1,18 +1,16 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-  faBed,
   faCalendarDays,
   faCar,
   faMapMarkerAlt,
-  faBicycle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
 import { DateRange } from "react-date-range";
-import { useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -26,8 +24,7 @@ const Header = ({ type }) => {
   ]);
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
-    cars: 1,
-    bikes: 0,
+    cars:  1,
   });
 
   const navigate = useNavigate();
@@ -36,13 +33,17 @@ const Header = ({ type }) => {
     setOptions((prev) => {
       return {
         ...prev,
-        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+        [name]: operation === "i" ? options[name] +  1 : options[name] -  1,
       };
     });
   };
 
   const handleSearch = () => {
     navigate("/empty", { state: { destination, date, options } });
+  };
+
+  const handleRegisterClick = () => {
+    navigate('/register');
   };
 
   return (
@@ -58,7 +59,6 @@ const Header = ({ type }) => {
             <FontAwesomeIcon icon={faCar} />
             <span>Parking</span>
           </div>
-         
           {/* Add other parking-related services as needed */}
         </div>
         {type !== "list" && (
@@ -70,19 +70,18 @@ const Header = ({ type }) => {
               Maximize Your Savings – Discover Instant Parking Discounts Up to
               10%!
             </p>
-            <button className="headerBtn">Sign in / Register</button>
+            <button className="headerBtn" onClick={handleRegisterClick}>Sign in / Register</button>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="headerIcon" />
                 <select
-  className="headerSearchSelect"
-  onChange={(e) => setDestination(e.target.value)}
->
-  <option value="">Select an airport ..</option>
-  <option value="location1"> Sfax–Thyna International Airport</option>
-  <option value="location2">Djerba Zarzis International Airport</option>
-</select>
-
+                  className="headerSearchSelect"
+                  onChange={(e) => setDestination(e.target.value)}
+                >
+                  <option value="">Select an airport ..</option>
+                  <option value="location1"> Sfax–Thyna International Airport</option>
+                  <option value="location2">Djerba Zarzis International Airport</option>
+                </select>
               </div>
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
@@ -109,14 +108,14 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenOptions(!openOptions)}
                   className="headerSearchText"
-                >{`${options.cars} cars · ${options.bikes} bikes`}</span>
+                >{`${options.cars} cars`}</span>
                 {openOptions && (
                   <div className="options">
                     <div className="optionItem">
                       <span className="optionText">Cars</span>
                       <div className="optionCounter">
                         <button
-                          disabled={options.cars <= 1}
+                          disabled={options.cars <=  1}
                           className="optionCounterButton"
                           onClick={() => handleOption("cars", "d")}
                         >
@@ -128,27 +127,6 @@ const Header = ({ type }) => {
                         <button
                           className="optionCounterButton"
                           onClick={() => handleOption("cars", "i")}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="optionItem">
-                      <span className="optionText">Bikes</span>
-                      <div className="optionCounter">
-                        <button
-                          disabled={options.bikes <= 0}
-                          className="optionCounterButton"
-                          onClick={() => handleOption("bikes", "d")}
-                        >
-                          -
-                        </button>
-                        <span className="optionCounterNumber">
-                          {options.bikes}
-                        </span>
-                        <button
-                          className="optionCounterButton"
-                          onClick={() => handleOption("bikes", "i")}
                         >
                           +
                         </button>

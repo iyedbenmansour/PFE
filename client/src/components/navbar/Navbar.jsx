@@ -1,34 +1,42 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../AuthContext'; // Import useAuth hook
 import "./navbar.css";
 
 const Navbar = () => {
+  const { loggedIn, logout } = useAuth(); // Use useAuth hook directly
   const navigate = useNavigate();
-  const isLoggedIn = false; // This should be dynamically set based on your authentication logic
 
   const handleLoginClick = () => {
-    if (isLoggedIn) {
-      navigate('/contactus');
+    if (loggedIn) {
+      navigate('/profile');
     } else {
       navigate('/login');
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   const handleContactUsClick = () => {
-    if (isLoggedIn) {
-      navigate('/contactus');
-    } else {
-      navigate('/register');
-    }
+    navigate('/contactus');
   };
 
   return (
     <div className="navbar">
       <div className="navContainer">
-        <span className="logo">Parking Time</span>
+        <Link to="/">
+          <span className="logo">Parking Time</span>
+        </Link>
         <div className="navItems">
           <button className="navButton" onClick={handleContactUsClick}>Contact Us</button>
-          <button className="navButton" onClick={handleLoginClick}>Login</button>
+          {loggedIn ? (
+            <button className="navButton" onClick={handleLogout}>Logout</button>
+          ) : (
+            <button className="navButton" onClick={handleLoginClick}>Login</button>
+          )}
         </div>
       </div>
     </div>
