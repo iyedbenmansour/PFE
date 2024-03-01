@@ -57,7 +57,7 @@ const Booking = () => {
   return (
     <>
       <div>
-        <Navbar />
+        <Navbar  />
         <Header type="list" />
         <div className="mainContentArea">
           <form className="bookingForm" onSubmit={handleSubmit}>

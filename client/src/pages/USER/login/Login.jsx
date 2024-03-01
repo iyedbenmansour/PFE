@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useAuth } from "../../../AuthContext";
 import "./auth.css";
 import Navbar from "../../../components/navbar/Navbar";
 import Header from "../../../components/header/Header";
 import Footer from "../../../components/footer/Footer";
+import useStore from "../../../store";
 
 const Login = () => {
-  const { login } = useAuth(); // Access the login function from the authentication context
+  const { login } = useStore(); // Access the login function from the authentication context
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);

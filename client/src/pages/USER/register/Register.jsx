@@ -19,6 +19,7 @@ const Register = () => {
  // Function to handle form submission
  const handleRegister = async (e) => {
   e.preventDefault();
+  
   const newUser = {
     name,
     password,

@@ -2,9 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext'; // Import useAuth hook
 import "./navbar.css";
-
+import useStore from '../../store'; 
 const Navbar = () => {
-  const { loggedIn, logout } = useAuth(); // Use useAuth hook directly
+  const loggedIn = useStore((state) => state.loggedIn)
+  const logout = useStore((state) => state.logout)
+
   const navigate = useNavigate();
 
   const handleLoginClick = () => {

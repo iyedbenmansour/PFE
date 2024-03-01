@@ -17,13 +17,11 @@ exports.loginUser = async (req, res) => {
     }
 
     // Update user's document with login date
-    user.lastLoginDate = new Date();
     await user.save();
 
     // If the password matches, return success
     res.json({ success: true, message: 'Login successful' });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
